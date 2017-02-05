@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="js/jquery-3.1.1.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/bootstrap-select.js"></script>
+	<script src="app.js"></script>
+	<title>TRANSLATER</title>
+</head>
+<body onload="onLoadFunction()">
+
+	<div class="vertical-center" id="form">	
+		<input id ="advanced" onclick="advancedFunction()" title="Tìm kiếm nâng cao" type="image" src="searchplus.png" style="background-color: transparent; width: 55px;"  name="" align="right">
+		<input type="image" id = "manage" title="Quản trị cơ sở dữ liệu" onclick="manageFunction()" src="setting.png" style="background-color: transparent; width: 55px;"   name="" align="right">
+		<input type="image" id="setting" title = "Tùy Chọn" onclick="optionFunction()" src="option.png" style="background-color: transparent; width: 55px; "  name="" align="right">
+		<div class="container">
+			<div class="lead">
+				<div  id="text">TRANSLATER</div>
+				<br/>
+				<br/>
+				<div class="btn-group">
+					<button type="button" class="btn btn-search btn-success " title="Tìm kiếm" id = "selectt" onclick="changeFunction()">
+						<span class="label-icon" id="labelChange">Search</span>
+					</button>
+					<button type="button" class="btn btn-search btn-primary" title="Từ điển Anh Việt" id="select" value="eng" onclick="myFunction()">
+						<span class="label-icon" id="labell">E</span>
+					</button>
+				</div>
+			</div>
+			<br />
+			<br />
+			<div>
+				<form class="navbar-form">
+					<input class="form-control" type="text" name="search" id="search">
+					<input class="search ui-autocomplete-input form-control"  type="text" style="visibility: hidden; display: none;" name="insert" id="insert" >
+					<button type="button" style="visibility: hidden;display: none;" class="form-control btn btn-success " id = "iUpload" value="search" onclick="insertUpload()">	
+						<span class="glyphicon glyphicon-circle-arrow-up large" id="icUpload"></span>
+					</button>
+					<table align="center" id="con"></table>
+					<span contenteditable="true"></span>
+				</form>   			
+				
+				<br />
+				<br />
+			</div>				
+		</div>
+	</div>
+</body>
+</html>

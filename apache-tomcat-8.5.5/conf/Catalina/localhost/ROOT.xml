@@ -1,0 +1,5 @@
+<Context 
+  docBase="<yourApp>" 
+  path="F:\JAVA\OOP\BAITAPLON\apache-tomcat-8.5.5\webapps\ROOT" 
+  reloadable="true" 
+/>

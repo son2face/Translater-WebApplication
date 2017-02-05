@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>File Uploading Form</title>
+<script>
+	myApp.directive('fileModel', ['$parse', function($parse){
+	return {
+		restrict: 'A',
+		link: function(scope, element, attrs){
+			var model = $parse(attrs.fileModel);
+			var modelSetter = model.assign;
+
+			element.bind('change', function(){
+				scope.$apply(function(){
+					modelSetter(scope, element[0].files[0]);
+				})
+			})
+		}
+	}
+}]);
+	myApp.controller('submitController', ['$scope', 'multipartForm', function($scope, multipartForm){
+		$scope.customer = {};
+		$scope.Submit = function(){
+			var uploadUrl = '/upload';
+			multipartForm.post(uploadUrl, $scope.customer);
+		}
+	}]);
+	myApp.controller('profileController', ['$scope', function($scope){
+	$scope.users = [
+		{ 
+			name: "Brent Aureli",
+		  	age: 29,
+		 	occupation: "Registered Nurse" },
+		{
+			name: "Nico Aureli",
+			age: 26, 
+			occupation: "Fire Fighter"
+		},
+		{
+			name: "Nathan Cross",
+			age: 28,
+			occupation: "Profressional Gamer"
+		}
+	];
+
+}]);
+myApp.service('multipartForm', ['$http', function($http){
+	this.post = function(uploadUrl, data){
+		var fd = new FormData();
+		for(var key in data)
+			fd.append(key, data[key]);
+		$http.post(uploadUrl, fd, {
+			transformRequest: angular.indentity,
+			headers: { 'Content-Type': undefined }
+		});
+	}
+}])
+</script>
+<script>
+	myApp.directive('fileModel',['$parse',function($parse){
+		return{
+			restrict: 'A',
+			link: function(scope,element, attrs){
+				var model = $parse(atts.fileModel);
+				var modelSetter = model.assign;
+				element.bind('change',function(){
+					scope.$apply(function(){
+						modelSetter(scope,element[0].files[0]);
+					})
+				})
+			}
+		}
+	})
+</script>
+</head>
+<body ng-app="apprr">
+
+	<h3>File Upload:</h3>
+	Select a file to upload: <br />
+	<form action="HelloWorld" method="post" enctype="multipart/form-data">
+	<input type="file" name="file" size="50" />
+	<br />
+	<input type="submit" value="Upload File" />
+	</form>
+</body>
+</html>
